@@ -2,6 +2,10 @@ function getChrono(date, text) {
   const now = new Date().getTime();
   const countdownDate = new Date(date).getTime();
   const distanceBase = countdownDate - now;
+  
+   if (distanceBase <= 0) {
+    clearInterval(countdownInterval);
+  }
 
   const daysInMilli = 1000 * 60 * 60 * 24;
   const hoursInMilli = 1000 * 60 * 60;
@@ -13,11 +17,7 @@ function getChrono(date, text) {
   const minutes = Math.floor((distanceBase % hoursInMilli) / minutesInMilli);
   const seconds = Math.floor((distanceBase % minutesInMilli) / secondsInMilli);
 
-  text.innerText = `${days}j ${hours}h ${minutes}m ${seconds}s`;
-
-  if (distanceBase <= 0) {
-    clearInterval(countdownInterval);
-  }
+  text.innerText = `${days}j ${hours}h ${minutes}m ${seconds}s`; 
 }
 
 const text = document.querySelector("h1");
