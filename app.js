@@ -5,6 +5,8 @@ function getChrono(date, text) {
   
    if (distanceBase <= 0) {
     clearInterval(countdownInterval);
+    text.innerText = "Time is over !"
+    return;
   }
 
   const daysInMilli = 1000 * 60 * 60 * 24;
